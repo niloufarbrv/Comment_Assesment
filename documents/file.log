@@ -1,0 +1,6 @@
+2023-01-12 20:09:09,249 - __main__ - INFO - Reading data and splitting it to train, validation, test
+2023-01-12 20:09:13,929 - __main__ - INFO - Creating datasets
+2023-01-12 20:09:17,362 - __main__ - INFO - Creating dataloaders
+2023-01-12 21:48:46,652 - __main__ - INFO - Reading data and splitting it to train, test, validation
+2023-01-12 21:58:38,189 - __main__ - INFO - Reading data and splitting it to train, test, validation
+2023-01-12 22:00:26,095 - __main__ - INFO - Reading data and splitting it to train, test, validation
