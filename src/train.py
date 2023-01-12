@@ -152,6 +152,12 @@ for epoch in range(args.num_epoch):
     if best_validation_loss is None:
         best_validation_loss = total_loss_validation
 
+    # checking if the directory assets exist or not.
+    if not (BASE_PATH / "assets").isdir():
+        # if the assets directory is not present then create it.
+        p = (BASE_PATH / "assets")
+        p.mkdir(parents=True, exist_ok=False)
+
     # save the best model
     if total_loss_validation < best_validation_loss:
         best_validation_loss = total_loss_validation
