@@ -117,9 +117,9 @@ for epoch in range(args.num_epoch):
     writer.add_scalar(f"Accuracy/train", total_accuracy_train, epoch)
     writer.add_scalar(f"f1/train", total_f1_train, epoch)
 
-    logger.info(f"Epoch {epoch + 1} - Training Loss: {torch.round(total_loss_train, decimals=3)}")
+    logger.info(f"Epoch {epoch + 1} - Training Loss: {round(total_loss_train, 3)}")
     logger.info(f"Epoch {epoch + 1} - Training Accuracy: {total_accuracy_train}")
-    logger.info(f"Epoch {epoch + 1} - Training F1-macro: {torch.round(total_f1_train, decimals=3)}")
+    logger.info(f"Epoch {epoch + 1} - Training F1-macro: {round(total_f1_train, 3)}")
 
     model.eval()
     with torch.no_grad():
@@ -146,11 +146,13 @@ for epoch in range(args.num_epoch):
 
     logger.info(f"Epoch {epoch + 1} - Validation Loss: {round(total_loss_validation, 3)}")
     logger.info(f"Epoch {epoch + 1} - Validation Accuracy: {total_accuracy_validation}")
-    logger.info(f"Epoch {epoch + 1} - Validation f1: {round(total_f1_validation, 3)}")
+    logger.info(f"Epoch {epoch + 1} - Validation f1-macro: {round(total_f1_validation, 3)}")
 
+    # set best_validation_loss for the first epoch
     if best_validation_loss is None:
         best_validation_loss = total_loss_validation
 
+    # save the best model
     if total_loss_validation < best_validation_loss:
         best_validation_loss = total_loss_validation
         torch.save(model.state_dict(), args.saved_model_dir / "saved_model.pt")
